@@ -1,0 +1,83 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      3 3
+      2 2
+      abc
+      def
+      ghi
+      5
+      bedhi
+    out: |
+      11
+  - name: sample2
+    in: |
+      2 3
+      1 1
+      abc
+      def
+      2
+      az
+    out: |
+      -1
+  - name: sample3
+    in: |
+      5 6
+      3 4
+      abcdef
+      ghijkl
+      mnopqr
+      stuvwx
+      yzabcd
+      22
+      algorithmicprogramming
+    out: |
+      90
+  - name: sample4
+    in: |
+      20 30
+      10 15
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      abcdefghijklmnopqrstuvwxyzabcd
+      260
+      abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+    out: |
+      749
+  - name: sample5
+    in: |
+      1 1
+      1 1
+      a
+      1
+      a
+    out: |
+      1
+
+extend:
+  - type: Text
+    path: "./d"
+    in: /in/*.txt
+    out: /out/*.txt
