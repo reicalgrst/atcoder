@@ -1,0 +1,45 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      3
+      tanabata
+      summer
+      tanabatatanabata
+    out: |
+      3
+  - name: sample2
+    in: |
+      5
+      abctanabatadef
+      tanabata
+      xxxxxxxxxx
+      tanabatanabata
+      holiday
+    out: |
+      4
+  - name: sample3
+    in: |
+      10
+      thesummerstarfestivaltanabataisbeautiful
+      tanabatatanabatatanabata
+      abcdefghijklmnopqrstuvwxyz
+      aaatanabatabbbtanabataccc
+      summerbeachsernlight
+      tanabatanabatanabatanabata
+      zzzzzzzzzzzzzzzzzzzzz
+      atanabatax
+      tanabata
+      mytanabatamemorytanabatadreamtanabatanight
+    out: |
+      6
+
+extend:
+  - type: Text
+    path: "./a"
+    in: /in/*.txt
+    out: /out/*.txt
