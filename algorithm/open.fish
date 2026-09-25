@@ -7,6 +7,11 @@ function print_usage
 end
 
 function contest_directory --argument-names contest
+    if string match --quiet --regex '^past.*$' -- $contest
+        echo "contests/past/$contest"
+        return
+    end
+
     if string match --quiet --regex '^adt_[a-z0-9]+_[0-9]{8}_[0-9]+$' -- $contest
         set --local parts (string split '_' -- $contest)
         set --local category $parts[2]
