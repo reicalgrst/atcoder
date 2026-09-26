@@ -1,5 +1,4 @@
 #![allow(non_snake_case)]
-use ac_library::segtree::{Min, Segtree};
 use proconio::{marker::Usize1, *};
 use std::{cmp::Reverse, collections::BinaryHeap};
 
@@ -11,8 +10,6 @@ macro_rules! debug {
         eprintln!(concat!($("| ", stringify!($a), " = {:?} "),*, "|"), $(&$a),*);
     };
 }
-
-// リファクタリング後
 
 fn dijkstra(v: usize, a: &Vec<usize>, b: &Vec<usize>, dist: &mut Vec<usize>) {
     let mut pq = BinaryHeap::new();
@@ -66,13 +63,6 @@ fn main() {
         csum[i + 1] = csum[i] + a[i % n];
     }
 
-    let mut ccsum = vec![0; 2 * n];
-    for i in 0..2 * n {
-        ccsum[i] = csum[i] + dist[i % n];
-    }
-
-    let ccsum = Segtree::<Min<usize>>::from(ccsum);
-
     for _ in 0..q {
         input! {
             s: Usize1, t: Usize1
@@ -83,21 +73,11 @@ fn main() {
             continue;
         }
 
-        debug!(s, t);
-        let mini1 = ccsum.prod(s..t) - csum[s];
-        let d1 = mini1 + dist[t];
-        debug!(d1, mini1);
+        let d1 = dist[s] + dist[t];
+        let d2 = csum[t] - csum[s];
+        let d3 = csum[s + n] - csum[t];
 
-        let mini2 = ccsum.prod(t..(s + n)) - csum[t];
-        let d2 = mini2 + dist[s];
-        debug!(d2, mini2);
-
-        let d3 = csum[t] - csum[s];
-        debug!(d3, csum[t], csum[s]);
-        let d4 = csum[s + n] - csum[t];
-        debug!(d4, csum[s + n], csum[t]);
-
-        let res = vec![d1, d2, d3, d4].into_iter().min().unwrap();
+        let res = vec![d1, d2, d3].into_iter().min().unwrap();
         println!("{res}");
     }
 }
